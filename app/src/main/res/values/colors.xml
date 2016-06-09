@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Konachan Theme (Dark) -->
+    <color name="colorDarkPrimary">#616161</color>
+    <color name="colorDarkPrimaryDark">#212121</color>
+    <color name="colorDarkAccent">#EF9A9A</color>
+    <color name="colorDarkBG">@color/colorDarkPrimaryDark</color>
+    <color name="colorDarkText">@color/colorDarkAccent</color>
+    <color name="colorDarkTextDark">@color/colorDarkPrimary</color>
+    <color name="colorDarkDrawer">@color/colorDarkPrimary</color>
+
+    <!-- Gelbooru Theme (Light) -->
+    <color name="colorLightPrimary">#2196F3</color>
+    <color name="colorLightPrimaryDark">#0D47A1</color>
+    <color name="colorLightAccent">#FF4081</color>
+    <color name="colorLightBG">#FFFFFF</color>
+    <color name="colorLightText">@color/colorLightPrimary</color>
+    <color name="colorLightTextDark">@color/colorLightPrimaryDark</color>
+    <color name="colorLightDrawer">@color/colorLightPrimary</color>
+
+    <!-- Set the main palette here -->
+
+    <color name="colorPrimary">@color/colorDarkPrimary</color>
+    <color name="colorPrimaryDark">@color/colorDarkPrimaryDark</color>
+    <color name="colorAccent">@color/colorDarkAccent</color>
+    <color name="colorBG">@color/colorDarkBG</color>
+    <color name="colorText">@color/colorDarkText</color>
+    <color name="colorTextDark">@color/colorDarkTextDark</color>
+
+
+    <!-- Set the main palette here -->
+    <!--
+    <color name="colorPrimary">@color/colorLightPrimary</color>
+    <color name="colorPrimaryDark">@color/colorLightPrimaryDark</color>
+    <color name="colorAccent">@color/colorLightAccent</color>
+    <color name="colorBG">@color/colorLightBG</color>
+    <color name="colorText">@color/colorLightText</color>
+    <color name="colorTextDark">@color/colorLightTextDark</color>
+    <color name="colorDrawer">@color/colorLightDrawer</color>
+    -->
+
+</resources>

@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/colorBG">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Resolution "
+            android:id="@+id/textViewSearchSize"
+            android:textColor="@color/colorTextDark"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="4"
+            android:id="@+id/editTextSearchW"
+            android:hint="1920"
+            android:textColor="@color/colorText"
+            android:textColorHint="@color/colorTextDark"
+            android:textAlignment="textEnd"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="x"
+            android:id="@+id/textView3"
+            android:textColor="@color/colorText"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="4"
+            android:id="@+id/editTextSearchH"
+            android:hint="1080"
+            android:textColor="@color/colorText"
+            android:textColorHint="@color/colorTextDark"
+            android:textAlignment="textStart"/>
+    </LinearLayout>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Use device&apos;s resolution"
+        android:id="@+id/checkBoxSearchScreenRes"
+        android:clickable="false"
+        android:onClick="onCheckBoxChecked"
+        android:textColor="@color/colorText"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Sorting"
+            android:id="@+id/textViewSearchOrder"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/colorTextDark"/>
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioGroupFilterSorting">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="by date"
+                android:id="@+id/radioButtonSortingDate"
+                android:onClick="onRadioButtonClicked"
+                android:textColor="@color/colorText"/>
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="by date (reverse)"
+                android:id="@+id/radioButtonSortingDateR"
+                android:onClick="onRadioButtonClicked"
+                android:textColor="@color/colorText"/>
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="by score"
+                android:id="@+id/radioButtonSortingScore"
+                android:onClick="onRadioButtonClicked"
+                android:textColor="@color/colorText"/>
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Score"
+            android:id="@+id/textViewSearchScore"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/colorTextDark"/>
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioGroupFilterScore">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=">"
+                android:id="@+id/radioButtonSearchScoreSup"
+                android:onClick="onRadioButtonClicked"
+                android:textColor="@color/colorText"/>
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="&lt;"
+                android:id="@+id/radioButtonSearchScoreInf"
+                android:onClick="onRadioButtonClicked"
+                android:textColor="@color/colorText"/>
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="="
+                android:id="@+id/radioButtonSearchScoreEq"
+                android:onClick="onRadioButtonClicked"
+                android:textColor="@color/colorText"/>
+        </RadioGroup>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="4"
+            android:id="@+id/editTextSearchScore"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/colorText"
+            android:textColorHint="@color/colorTextDark"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Date"
+            android:id="@+id/textViewSearchDate"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/colorTextDark"/>
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioGroupFilterDate">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Anytime"
+                android:id="@+id/radioButtonSearchDateAnytime"
+                android:onClick="onRadioButtonClicked"
+                android:textColor="@color/colorText"/>
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/select_date"
+                android:id="@+id/radioButtonSearchDateDay"
+                android:onClick="onRadioButtonClicked"
+                android:textColor="@color/colorText"/>
+
+        </RadioGroup>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Rating"
+            android:id="@+id/textViewFilterRating"
+            android:textColor="@color/colorTextDark"
+            android:layout_gravity="center_vertical"/>
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioGroupFilterRating">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Any"
+                android:id="@+id/radioButtonFilterRatingAny"
+                android:onClick="onRadioButtonClicked"
+                android:textColor="@color/colorText"/>
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Safe"
+                android:id="@+id/radioButtonFilterRatingSafe"
+                android:onClick="onRadioButtonClicked"
+                android:textColor="@color/colorText"/>
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Questionable"
+                android:id="@+id/radioButtonFilterRatingQuest"
+                android:onClick="onRadioButtonClicked"
+                android:textColor="@color/colorText"/>
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Explicit"
+                android:id="@+id/radioButtonFilterRatingExp"
+                android:onClick="onRadioButtonClicked"
+                android:textColor="@color/colorText"/>
+        </RadioGroup>
+    </LinearLayout>
+
+</LinearLayout>
