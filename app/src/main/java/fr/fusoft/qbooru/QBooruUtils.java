@@ -81,7 +81,7 @@ public class QBooruUtils {
     }
 
     public static Bitmap drawableToBitmap(Drawable d) {
-        Bitmap bitmap = null;
+        Bitmap bitmap;
 
         if (d instanceof BitmapDrawable) {
             BitmapDrawable bitmapDrawable = (BitmapDrawable) d;
@@ -90,15 +90,19 @@ public class QBooruUtils {
             }
         }
 
-        if(d.getIntrinsicWidth() <= 0 || d.getIntrinsicHeight() <= 0) {
+
+        if (d == null || d.getIntrinsicWidth() <= 0 || d.getIntrinsicHeight() <= 0) {
             bitmap = Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888); // Single color bitmap will be created of 1x1 pixel
         } else {
             bitmap = Bitmap.createBitmap(d.getIntrinsicWidth(), d.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
         }
 
         Canvas canvas = new Canvas(bitmap);
-        d.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
-        d.draw(canvas);
+        if (d != null) {
+            d.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+            d.draw(canvas);
+        }
+
         return bitmap;
     }
     public static boolean saveDrawableToFile(File dir, String fileName, Drawable d, Bitmap.CompressFormat format, int quality) {
