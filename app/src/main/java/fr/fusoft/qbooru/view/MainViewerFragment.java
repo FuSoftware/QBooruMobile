@@ -54,7 +54,6 @@ public class MainViewerFragment extends Fragment {
     private View  myFragmentView;
     String LOG_TAG = "ViewerFragment";
     private BooruSite site;
-    List<String> last_data = new ArrayList<>();
     BooruSearchEngine engine = new BooruSearchEngine();
     HashMap<Integer, String> saved_thumb_paths = new HashMap<>();
     List<BooruPicture> saved_pictures = new ArrayList<>();
@@ -69,6 +68,8 @@ public class MainViewerFragment extends Fragment {
     MainGrid adapter;
     private List<String> mTagList = new ArrayList<>();
     boolean resumed = false;
+
+    List<ThumbsLoader> loaders = new ArrayList<>();
 
     Bundle savedState;
 
@@ -97,6 +98,11 @@ public class MainViewerFragment extends Fragment {
         super.onPause();
         savedState = new Bundle();
         saveInstance(savedState);
+
+        Log.d(LOG_TAG,"Stopping " + loaders.size() + " loaders");
+        for(ThumbsLoader l : loaders){
+            l.cancel(true);
+        }
     }
 
     public void saveInstance(Bundle outState){
@@ -345,7 +351,9 @@ public class MainViewerFragment extends Fragment {
         int start = adapter.getPictures().size() - pictures.size();
 
         for(int i=0;i<pictures.size();i++){
-            new ThumbsLoader().execute(start + i);
+            ThumbsLoader l = new ThumbsLoader();
+            loaders.add(l);
+            l.execute(start + i);
         }
     }
 
@@ -362,7 +370,12 @@ public class MainViewerFragment extends Fragment {
             gridView.invalidateViews();
         }
 
-        loadThumbs(pictures);
+        if(isMenuVisible()) {
+            Log.d(LOG_TAG,getBooruSite().getName() + " is Visible");
+            loadThumbs(pictures);
+        }else{
+            Log.d(LOG_TAG,getBooruSite().getName() + " is Hidden");
+        }
     }
 
     public void loadViewer(BooruPicture picture){

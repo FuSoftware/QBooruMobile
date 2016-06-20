@@ -133,6 +133,35 @@ public class MainViewer extends AppCompatActivity {
         viewPager.setAdapter(adapter);
         viewPager.setOffscreenPageLimit(1);
 
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                for(int i=0;i<fragments.size();i++){
+                    if(i != position) {
+                        MainViewerFragment f = fragments.get(position);
+                        if (f != null && f.isVisible() && !f.isMenuVisible()) {
+                            f.onPause();
+                        }
+                    }
+                }
+
+                MainViewerFragment f = fragments.get(position);
+                f.onResume();
+
+                Log.d(LOG_TAG,"Working on " + f.getBooruSite().getName());
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
         Log.e(LOG_TAG, viewPager.getAdapter().getCount() + " boorus loaded");
 
         tabLayout = (TabLayout) findViewById(R.id.tabsMainViewer);
@@ -146,8 +175,7 @@ public class MainViewer extends AppCompatActivity {
     }
 
     public MainViewerFragment getFragmentAt(int pos){
-        MainViewerFragment page = (MainViewerFragment) getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.viewPagerMainViewer + ":" + pos);
-        return page;
+        return (MainViewerFragment) getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.viewPagerMainViewer + ":" + pos);
     }
 
     class ViewPagerAdapter extends FragmentPagerAdapter {
